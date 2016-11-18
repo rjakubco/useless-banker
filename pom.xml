@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<artifactId>useless-banker</artifactId>
+	<groupId>org.home.project</groupId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>bundle</packaging>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!--<bundle.require.bundle>org.springframework.jdbc</bundle.require.bundle>-->
+		<bundle.dynamicimport.package>*</bundle.dynamicimport.package>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-pdf</artifactId>
+			<version>2.17.0</version>
+			<!-- use the same version as your Camel core version -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-stream</artifactId>
+			<version>2.17.0</version>
+			<!--<version>${camel.version}</version>-->
+			<!-- use the same version as your Camel core version -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>2.17.0</version>
+			<!--<version>${camel.version}</version>-->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring</artifactId>
+			<version>2.17.0</version>
+			<!--<version>${camel.version}</version>-->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jms</artifactId>
+			<version>2.17.0</version>
+			<!--<version>${camel.version}</version>-->
+			<!-- use the same version as your Camel core version -->
+		</dependency>
+		<dependency>
+			<groupId>org.mongojack</groupId>
+			<artifactId>mongojack</artifactId>
+			<version>2.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.6</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.dozd</groupId>
+			<artifactId>mongo-mapper</artifactId>
+			<version>1.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>1.9.5.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.2.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.2.5.RELEASE</version>
+		</dependency>
+
+		<!-- mongodb java driver -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+
+		<plugins>
+			<!-- to generate the MANIFEST-FILE of the bundle -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.3.4</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>useless-banker</Bundle-SymbolicName>
+						<Private-Package>org.home.project.*</Private-Package>
+						<Bundle-Name>${project.artifactId}</Bundle-Name>
+						<!--<Require-Bundle>${bundle.require.bundle}</Require-Bundle>-->
+
+						<!--<DynamicImport-Package>${bundle.dynamicimport.package}</DynamicImport-Package>-->
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+</project>

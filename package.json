@@ -1,0 +1,15 @@
+{
+  "author": "test",
+  "name": "patternfly-test",
+  "repository": "",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "description": "",
+  "homepage": "",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.10.10"
+  }
+}

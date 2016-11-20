@@ -1,0 +1,20 @@
+<div class="input-group time-picker-pf" id="{{include._id}}">
+  <input type="text" class="form-control">
+      <span class="input-group-addon btn btn-default">
+        <span class="fa fa-clock-o"></span>
+      </span>
+</div>
+<script>
+  $(function () {
+    $('#{{include._id}}').datetimepicker({
+      format: 'LT',
+      keyBinds: {
+        enter: function () {
+          $('#{{include._id}}').find('input').trigger('change');
+          this.hide();
+        }
+      }
+    });
+    $('#{{include._id}}').data('DateTimePicker').clear();
+  });
+</script>

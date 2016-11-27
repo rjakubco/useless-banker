@@ -9,6 +9,9 @@
 *.iml
 *.iws
 
+# Frontend
+bower_components/
+
 # Mac
 .DS_Store
 

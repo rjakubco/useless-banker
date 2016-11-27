@@ -1,0 +1,1 @@
+angular.module('core', ['core.user', 'core.transaction', 'core.merchant', 'core.history', 'core.category']);

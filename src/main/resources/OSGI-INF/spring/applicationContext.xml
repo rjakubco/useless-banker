@@ -3,34 +3,52 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:jaxrs="http://cxf.apache.org/jaxrs"
 		xsi:schemaLocation="http://camel.apache.org/schema/spring
 		http://camel.apache.org/schema/spring/camel-spring.xsd
 		http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context
-		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://cxf.apache.org/jaxrs
+		http://cxf.apache.org/schemas/jaxrs.xsd">
 
-		<context:annotation-config/>
-	<context:component-scan base-package="org.home.project" />
-		<!-- bean definitions go here -->
+
+
+	<context:annotation-config/>
+	<context:component-scan base-package="org.home.project"/>
+	<!-- bean definitions go here -->
+	<bean id="convertToObjects" class="org.home.project.parsers.Converter"/>
+
+
+	<jaxrs:server id="customerService" address="/service1">
+		<jaxrs:providers>
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<ref bean="customerBean"/>
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<bean id="customerBean" class="org.home.project.webservices.UserService"/>
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 
 		<!--<route>-->
-			<!--<from uri="activemq:queue:start"/>-->
-			<!--<choice>-->
-				<!--<when>-->
-					<!--&lt;!&ndash;not used&ndash;&gt;-->
-					<!--<simple></simple>-->
-					<!--<to uri="bean:pdfParser"/>-->
-				<!--</when>-->
-				<!--<when>-->
-					<!--<simple></simple>-->
-					<!--<to uri="bean:txtParser"/>-->
-				<!--</when>-->
-			<!--</choice>-->
-			<!--<to uri="bean:convertToObjects"/>-->
-			<!--<to uri="mongodb:insert"/>-->
+		<!--<from uri="activemq:queue:start"/>-->
+		<!--&lt;!&ndash;<choice>&ndash;&gt;-->
+		<!--&lt;!&ndash;<when>&ndash;&gt;-->
+		<!--&lt;!&ndash;&lt;!&ndash;not used&ndash;&gt;&ndash;&gt;-->
+		<!--&lt;!&ndash;<simple></simple>&ndash;&gt;-->
+		<!--&lt;!&ndash;<to uri="bean:pdfParser"/>&ndash;&gt;-->
+		<!--&lt;!&ndash;</when>&ndash;&gt;-->
+		<!--&lt;!&ndash;<when>&ndash;&gt;-->
+		<!--&lt;!&ndash;<simple></simple>&ndash;&gt;-->
+		<!--&lt;!&ndash;<to uri="bean:txtParser"/>&ndash;&gt;-->
+		<!--&lt;!&ndash;</when>&ndash;&gt;-->
+		<!--&lt;!&ndash;</choice>&ndash;&gt;-->
+		<!--<to uri="bean:convertToObjects"/>-->
+		<!--&lt;!&ndash;<to uri="mongodb:insert"/>&ndash;&gt;-->
 		<!--</route>-->
 	</camelContext>
 

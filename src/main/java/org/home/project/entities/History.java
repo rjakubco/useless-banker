@@ -1,20 +1,23 @@
 package org.home.project.entities;
 
+import org.mongojack.ObjectId;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
-import eu.dozd.mongo.annotation.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * @author : Roman Jakubco (rjakubco@redhat.com)
  */
-@Entity
 public class History {
 
-	@eu.dozd.mongo.annotation.Id
+	@ObjectId
 	@Getter
 	@Setter
+	@JsonProperty("_id")
 	private String id;
 
 	@Getter

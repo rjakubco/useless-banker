@@ -1,6 +1,9 @@
 package org.home.project.entities;
 
-import eu.dozd.mongo.annotation.Entity;
+import org.mongojack.ObjectId;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,13 +11,13 @@ import lombok.ToString;
 /**
  * @author : Roman Jakubco (rjakubco@redhat.com)
  */
-@Entity
 @ToString
 public class User {
 
-	@eu.dozd.mongo.annotation.Id
+	@ObjectId
 	@Getter
 	@Setter
+	@JsonProperty("_id")
 	private String id;
 
 	@Getter
@@ -24,4 +27,5 @@ public class User {
 	@Getter
 	@Setter
 	private String password;
+
 }

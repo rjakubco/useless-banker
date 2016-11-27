@@ -1,18 +1,20 @@
 package org.home.project.entities;
 
-import eu.dozd.mongo.annotation.Entity;
+import org.mongojack.ObjectId;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * @author : Roman Jakubco (rjakubco@redhat.com)
  */
-@Entity
 public class Category {
-
-	@eu.dozd.mongo.annotation.Id
+	@ObjectId
 	@Getter
 	@Setter
+	@JsonProperty("_id")
 	private String id;
 
 	@Getter
